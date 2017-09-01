@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3B1B8AF61F55107C00CAC3EE /* ContainerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1B8AF51F55107C00CAC3EE /* ContainerVC.m */; };
-		3B33AC771F593ADD00ACDADC /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B33AC761F593ADD00ACDADC /* OverlayView.xib */; };
 		3B33AC7D1F59449E00ACDADC /* SideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B33AC7C1F59449E00ACDADC /* SideMenu.m */; };
 		3B33AC861F595D6000ACDADC /* OverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B33AC851F595D6000ACDADC /* OverlayViewController.m */; };
 		3BA70DCD1F53C71C00AC7217 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA70DCC1F53C71C00AC7217 /* main.m */; };
@@ -25,7 +24,6 @@
 /* Begin PBXFileReference section */
 		3B1B8AF41F55107C00CAC3EE /* ContainerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerVC.h; sourceTree = "<group>"; };
 		3B1B8AF51F55107C00CAC3EE /* ContainerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerVC.m; sourceTree = "<group>"; };
-		3B33AC761F593ADD00ACDADC /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
 		3B33AC7B1F59449E00ACDADC /* SideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenu.h; sourceTree = "<group>"; };
 		3B33AC7C1F59449E00ACDADC /* SideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenu.m; sourceTree = "<group>"; };
 		3B33AC841F595D6000ACDADC /* OverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OverlayViewController.h; path = ../OverlayViewController.h; sourceTree = "<group>"; };
@@ -100,7 +98,6 @@
 				3BA70DCF1F53C71C00AC7217 /* AppDelegate.m */,
 				3B1B8AF31F550A8600CAC3EE /* Controller */,
 				3BA70DD41F53C71C00AC7217 /* Main.storyboard */,
-				3B33AC761F593ADD00ACDADC /* OverlayView.xib */,
 				3BA70DDC1F53C71C00AC7217 /* LaunchScreen.storyboard */,
 				3BA70DCB1F53C71C00AC7217 /* Supporting Files */,
 			);
@@ -178,7 +175,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BA70DDE1F53C71C00AC7217 /* LaunchScreen.storyboard in Resources */,
-				3B33AC771F593ADD00ACDADC /* OverlayView.xib in Resources */,
 				3BA70DDB1F53C71C00AC7217 /* Assets.xcassets in Resources */,
 				3BA70DD61F53C71C00AC7217 /* Main.storyboard in Resources */,
 			);

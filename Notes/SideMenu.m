@@ -7,6 +7,7 @@
 //
 
 #import "SideMenu.h"
+#import "OverlayViewController.h"
 
 @interface SideMenu ()
 
@@ -24,11 +25,25 @@
 }
 
 - (void)pickerView {
-    PickerView *pickerView = [[PickerView alloc] init];
+    OverlayViewController *overlayViewController = (OverlayViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"OverlayViewController"];
+    [self presentViewController:overlayViewController animated:YES completion:nil];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"index: %ld",(long)indexPath.row);
+    switch (indexPath.row) {
+        case 1:
+            [self pickerView];
+            break;
+        case 2:
+            [self pickerView];
+            break;
+        case 4:
+            [self pickerView];
+            break;
+        default:
+            break;
+    }
 }
 
 

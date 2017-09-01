@@ -117,7 +117,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ts9-DV-7Rd">
-                                            <rect key="frame" x="18" y="13" width="292" height="20"/>
+                                            <rect key="frame" x="18" y="13" width="237" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="wmV-HV-d9O"/>
                                             </constraints>
@@ -126,14 +126,14 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="15J-6K-NPd">
-                                            <rect key="frame" x="320" y="15" width="40" height="40"/>
+                                            <rect key="frame" x="265" y="15" width="40" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="15J-6K-NPd" secondAttribute="height" id="HkR-TI-uCE"/>
                                                 <constraint firstAttribute="width" constant="40" id="dtu-2D-aVZ"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLb-6d-nzB">
-                                            <rect key="frame" x="68" y="38" width="242" height="20"/>
+                                            <rect key="frame" x="68" y="38" width="187" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="eiF-ly-w3o"/>
                                             </constraints>
@@ -142,7 +142,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMu-GF-eIT">
-                                            <rect key="frame" x="0.0" y="69" width="375" height="1"/>
+                                            <rect key="frame" x="0.0" y="69" width="320" height="1"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="FmR-Ke-3BB"/>
@@ -591,6 +591,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SMF-op-0hn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-204" y="1252"/>
+        </scene>
+        <!--Overlay View Controller-->
+        <scene sceneID="q6L-3i-fo9">
+            <objects>
+                <viewController id="4z3-fu-Qvu" customClass="OverlayViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="19h-aq-buH"/>
+                        <viewControllerLayoutGuide type="bottom" id="8gp-0d-zmH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IWe-BI-h6h">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.92888319330000002" green="1" blue="0.3782549194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="4TB-Ff-wNB">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0XY-cm-Qd0">
+                            <connections>
+                                <action selector="cancel:" destination="4z3-fu-Qvu" id="1em-Fk-S42"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="9G9-EP-NGx">
+                            <connections>
+                                <action selector="saveAlarm:" destination="4z3-fu-Qvu" id="WoW-HP-8A4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TIf-nU-NpU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1535.625" y="1246.4788732394366"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="t74-GP-sMD">
+            <objects>
+                <navigationController storyboardIdentifier="OverlayViewController" automaticallyAdjustsScrollViewInsets="NO" id="XPh-8C-9TF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bjP-cS-cW6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4z3-fu-Qvu" kind="relationship" relationship="rootViewController" id="8pV-bI-o3d"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UiS-dK-Zma" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="538.125" y="1246.4788732394366"/>
         </scene>
     </scenes>
     <resources>
