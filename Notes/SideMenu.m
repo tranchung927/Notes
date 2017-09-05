@@ -18,7 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self registerNotificationSetTimeAlarm];
-    [self.isOnAlarm setSelectedSegmentIndex:1];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,26 +42,67 @@
     }
 }
 - (IBAction)repeatAlarm:(id)sender {
-    if (self.repeatAlarm.isOn) {
-        NSLog(@"True");
-    } else {
-        NSLog(@"False");
-    }
+    NSLog(@"%f and %f",[self.time timeIntervalSinceNow],[[NSDate date] timeIntervalSinceNow]);
 }
-- (IBAction)turnOnOffAlarm:(id)sender {
-    if (self.isOnAlarm.selectedSegmentIndex == 0) {
-        UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-        localNotification.fireDate = self.time;
-        localNotification.alertAction = @"Alarm";
-        localNotification.timeZone = [NSTimeZone defaultTimeZone];
-        localNotification.soundName = UILocalNotificationDefaultSoundName;
-        localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+
+- (void)notificationForTime:(BOOL)isOn withRepeat:(BOOL)isRepeat
+{
+    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+    localNotification.alertAction = @"Alarm";
+    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    localNotification.soundName = UILocalNotificationDefaultSoundName;
+    if (isOn) {
+        localNotification.userInfo = @{@"uid":@"Alarm"};
+        if (isRepeat) {
+            NSCalendar *calendar = [NSCalendar currentCalendar];
+            NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute|NSCalendarUnitSecond fromDate:self.time];
+            NSInteger hour = [components hour];
+            NSInteger minute = [components minute];
+            [components setHour:hour];
+            [components setMinute:minute];
+            
+            NSDate *nextTime = [calendar dateFromComponents:components];
+            if ([nextTime timeIntervalSinceNow] < 0) {
+                nextTime = [nextTime dateByAddingTimeInterval:60*60*24];
+            }
+            // Set a repeat interval to daily
+            localNotification.repeatInterval = kCFCalendarUnitDay;
+            localNotification.fireDate = nextTime;
+            localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+            NSLog(@"Repeat");
+        } else {
+            if ([self.time timeIntervalSinceNow] < 0) {
+                localNotification.fireDate = [self.time dateByAddingTimeInterval:60*60*24];
+                localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+            } else {
+                localNotification.fireDate = self.time;
+                localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+            }
+            NSLog(@"No Repeat");
+        }
         
         [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
         NSLog(@"Alarm On %@",self.time);
     } else {
-        NSLog(@"Alarm Off");
+        UIApplication *app = [UIApplication sharedApplication];
+        NSArray *eventArray = [app scheduledLocalNotifications];
+        for (int i=0; i<[eventArray count]; i++)
+        {
+            UILocalNotification* oneEvent = [eventArray objectAtIndex:i];
+            NSDictionary *userInfoCurrent = oneEvent.userInfo;
+            NSString *uid=[NSString stringWithFormat:@"%@",[userInfoCurrent valueForKey:@"uid"]];
+            if ([uid isEqualToString:@"Alarm"])
+            {
+                //Cancelling local notification
+                [app cancelLocalNotification:oneEvent];
+                break;
+            }
+        }
     }
+}
+
+- (IBAction)turnOnOffAlarm:(id)sender {
+    [self notificationForTime:(self.isOnAlarm.selectedSegmentIndex == 0) withRepeat:self.repeatAlarm.isOn];
 }
 
 - (void)registerNotificationSetTimeAlarm {
@@ -74,8 +114,8 @@
     NSDateFormatter *dateForMatter = [[NSDateFormatter alloc] init];
     [dateForMatter setDateFormat:@"HH:mm"];
     self.timeAlarm.text = [NSString stringWithFormat:@"Time   %@",[dateForMatter stringFromDate:notification.object]];
+    [self.isOnAlarm setSelectedSegmentIndex:1];
     NSLog(@"time %@",notification.object);
-    
 }
 -(void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
