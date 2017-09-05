@@ -12,5 +12,9 @@
 @property (weak, nonatomic) IBOutlet UIView *sideMenuViewContainer;
 @property (weak, nonatomic) IBOutlet UIButton *coverButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftSideMenuConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftOverlayView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomOverlayView;
+@property (weak, nonatomic) IBOutlet UIView *overlayView;
 @property (nonatomic) BOOL isSideMenuOpen;
+@property (nonatomic) BOOL isOverlayOpen;
 @end

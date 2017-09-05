@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface OverlayViewController : UIViewController
+//@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
+@property (weak, nonatomic) IBOutlet UIButton *coverButtonOverlay;
+@property (weak, nonatomic) IBOutlet UIView *viewContainerPicker;
 
 @end

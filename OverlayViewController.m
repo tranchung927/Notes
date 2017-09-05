@@ -16,29 +16,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.coverButtonOverlay.alpha = 0.5;
+    self.viewContainerPicker.layer.cornerRadius = 10;
+    self.viewContainerPicker.layer.borderWidth = 3;
+    self.viewContainerPicker.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor grayColor]);
+    self.viewContainerPicker.layer.masksToBounds = YES;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)saveAlarm:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (IBAction)clickCoverButtonOverlay:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"SetTimeAlarmClose" object:nil];
 }
-
-- (IBAction)cancel:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

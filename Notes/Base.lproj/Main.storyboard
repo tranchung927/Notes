@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -276,6 +277,12 @@
                                     <segue destination="Td9-hh-vrB" kind="embed" id="Sht-xH-UPJ"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecB-nd-X32">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <connections>
+                                    <segue destination="4z3-fu-Qvu" kind="embed" id="I30-sy-8xf"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -288,22 +295,28 @@
                             <constraint firstItem="GgS-fN-zJb" firstAttribute="top" secondItem="rsZ-1c-1zA" secondAttribute="bottom" id="Dpg-MO-Iqw"/>
                             <constraint firstItem="rsZ-1c-1zA" firstAttribute="leading" secondItem="46j-J3-BCn" secondAttribute="leading" id="KhI-WR-ZMP"/>
                             <constraint firstAttribute="trailing" secondItem="rsZ-1c-1zA" secondAttribute="trailing" id="ZKd-GP-4Rx"/>
+                            <constraint firstItem="ecB-nd-X32" firstAttribute="trailing" secondItem="9KK-i6-SH1" secondAttribute="trailing" id="fHe-aO-C2c"/>
                             <constraint firstItem="9KK-i6-SH1" firstAttribute="top" secondItem="46j-J3-BCn" secondAttribute="top" id="gzm-uv-qoY"/>
+                            <constraint firstItem="ecB-nd-X32" firstAttribute="leading" secondItem="9KK-i6-SH1" secondAttribute="leading" id="imi-uv-xT6"/>
                             <constraint firstItem="GgS-fN-zJb" firstAttribute="top" secondItem="czu-Kd-2iP" secondAttribute="bottom" id="lok-I5-Ok7"/>
+                            <constraint firstItem="ecB-nd-X32" firstAttribute="height" secondItem="9KK-i6-SH1" secondAttribute="height" id="sfw-sw-WTe"/>
+                            <constraint firstItem="GgS-fN-zJb" firstAttribute="top" secondItem="ecB-nd-X32" secondAttribute="bottom" id="x11-xN-KWa"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="VyQ-Zp-b8z">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="j8R-yN-FJL"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="bottomOverlayView" destination="x11-xN-KWa" id="uWy-lj-svQ"/>
                         <outlet property="coverButton" destination="rsZ-1c-1zA" id="B6Q-OS-kZ3"/>
                         <outlet property="leftSideMenuConstraint" destination="1bJ-yT-sxo" id="vRi-7V-LhM"/>
+                        <outlet property="overlayView" destination="ecB-nd-X32" id="47A-Rx-zFU"/>
                         <outlet property="sideMenuViewContainer" destination="czu-Kd-2iP" id="3qS-0L-dMo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Pf-6p-nVu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1082" y="870"/>
+            <point key="canvasLocation" x="-1083.75" y="869.36619718309862"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="E17-OW-tu9">
@@ -595,7 +608,7 @@
         <!--Overlay View Controller-->
         <scene sceneID="q6L-3i-fo9">
             <objects>
-                <viewController id="4z3-fu-Qvu" customClass="OverlayViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OverlayViewController" id="4z3-fu-Qvu" customClass="OverlayViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="19h-aq-buH"/>
                         <viewControllerLayoutGuide type="bottom" id="8gp-0d-zmH"/>
@@ -603,42 +616,52 @@
                     <view key="view" contentMode="scaleToFill" id="IWe-BI-h6h">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.92888319330000002" green="1" blue="0.3782549194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiZ-ir-mdB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="clickCoverButtonOverlay:" destination="4z3-fu-Qvu" eventType="touchUpInside" id="T7B-bN-M8A"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p7Q-lg-W79">
+                                <rect key="frame" x="81" y="213" width="158" height="142"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="I8w-4U-z1s">
+                                        <rect key="frame" x="0.0" y="0.0" width="158" height="189"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="526272532.38613802">
+                                            <!--2017-09-05 02:48:52 +0000-->
+                                        </date>
+                                    </datePicker>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="p7Q-lg-W79" firstAttribute="leading" secondItem="IWe-BI-h6h" secondAttribute="leadingMargin" constant="65" id="0Hu-IQ-Lb4"/>
+                            <constraint firstAttribute="trailing" secondItem="FiZ-ir-mdB" secondAttribute="trailing" id="0UV-AD-uqo"/>
+                            <constraint firstItem="8gp-0d-zmH" firstAttribute="top" secondItem="FiZ-ir-mdB" secondAttribute="bottom" id="2vB-5k-ggP"/>
+                            <constraint firstItem="FiZ-ir-mdB" firstAttribute="top" secondItem="19h-aq-buH" secondAttribute="bottom" id="94u-QV-PFW"/>
+                            <constraint firstItem="p7Q-lg-W79" firstAttribute="height" secondItem="FiZ-ir-mdB" secondAttribute="height" multiplier="1/4" id="FI5-Na-D1a"/>
+                            <constraint firstItem="FiZ-ir-mdB" firstAttribute="leading" secondItem="IWe-BI-h6h" secondAttribute="leading" id="Mvo-m8-toR"/>
+                            <constraint firstItem="p7Q-lg-W79" firstAttribute="centerY" secondItem="IWe-BI-h6h" secondAttribute="centerY" id="WZo-Tp-9OF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="p7Q-lg-W79" secondAttribute="trailing" constant="65" id="qHU-KK-Ehv"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4TB-Ff-wNB">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0XY-cm-Qd0">
-                            <connections>
-                                <action selector="cancel:" destination="4z3-fu-Qvu" id="1em-Fk-S42"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="9G9-EP-NGx">
-                            <connections>
-                                <action selector="saveAlarm:" destination="4z3-fu-Qvu" id="WoW-HP-8A4"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0XY-cm-Qd0"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="9G9-EP-NGx"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="coverButtonOverlay" destination="FiZ-ir-mdB" id="d89-1C-jax"/>
+                        <outlet property="viewContainerPicker" destination="p7Q-lg-W79" id="f7B-G2-Hft"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TIf-nU-NpU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1535.625" y="1246.4788732394366"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="t74-GP-sMD">
-            <objects>
-                <navigationController storyboardIdentifier="OverlayViewController" automaticallyAdjustsScrollViewInsets="NO" id="XPh-8C-9TF" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bjP-cS-cW6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="4z3-fu-Qvu" kind="relationship" relationship="rootViewController" id="8pV-bI-o3d"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UiS-dK-Zma" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="538.125" y="1246.4788732394366"/>
+            <point key="canvasLocation" x="664" y="1242"/>
         </scene>
     </scenes>
     <resources>
