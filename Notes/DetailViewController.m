@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "AppDelegate.h"
+#import "Database.h"
 
 @interface DetailViewController ()
 
@@ -19,7 +20,14 @@
 
 - (NSManagedObjectContext *)managedObjectContext {
     NSManagedObjectContext *context = nil;
-    context = [AppDelegate shared].persistentContainer.viewContext;
+    // Check version
+    NSString *ver = [[UIDevice currentDevice] systemVersion];
+    float ver_float = [ver floatValue];
+    if (ver_float > 5.0 && ver_float < 10.0) {
+        context = [Database.shared managedObjectContext];
+    } else if (ver_float > 10.0) {
+        context = [AppDelegate shared].persistentContainer.viewContext;
+    }
     return context;
 }
 - (void)loadImage: (NSString*)path {
@@ -55,7 +63,7 @@
 #pragma mark - Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.textFieldInputNote.delegate = self;
+    //    self.textFieldInputNote.delegate = self;
     if (self.detailItem != NULL) {
         [self configureView];
     } else {

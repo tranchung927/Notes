@@ -10,6 +10,7 @@
 #import "DetailViewController.h"
 #import "AppDelegate.h"
 #import "NoteTableViewCell.h"
+#import "Database.h"
 
 @interface MasterTableViewController ()
 
@@ -19,11 +20,19 @@
 
 - (NSManagedObjectContext *)managedObjectContext {
     NSManagedObjectContext *context = nil;
-    context = [AppDelegate shared].persistentContainer.viewContext;
+    // Check version
+    NSString *ver = [[UIDevice currentDevice] systemVersion];
+    float ver_float = [ver floatValue];
+    if (ver_float > 5.0 && ver_float < 10.0) {
+        context = [Database.shared managedObjectContext];
+    } else if (ver_float > 10.0) {
+        context = [AppDelegate shared].persistentContainer.viewContext;
+    }
     return context;
 }
 #pragma mark - Life Cycle
 - (void)viewDidLoad {
+    NSLog(@"System Version is %@",[[UIDevice currentDevice] systemVersion]);
     [super viewDidLoad];
     [self.cancelButton setTitle:@"Edit"];
     self.arrayDeleteIndexPath = [[NSMutableArray alloc]init];
@@ -69,7 +78,6 @@
     NSArray *results = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
     if (!results) {
         NSLog(@"Error fetching Note objects: %@\n%@", [error localizedDescription], [error userInfo]);
-        //        abort();
     }
     self.notes = [(NSArray *)results mutableCopy];
     NSLog(@"loaddate notes %ld",(unsigned long)results.count);
@@ -91,11 +99,23 @@
             NSManagedObject *object = [results objectAtIndex:indexPath.row];
             [[self managedObjectContext] deleteObject:object];
             NSError *error = nil;
-            if (![[AppDelegate shared].persistentContainer.viewContext save:&error]) {
-                // Replace this implementation with code to handle the error appropriately.
-                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                NSLog(@"Unresolved error %@, %@", error, error.userInfo);
-                abort();
+            // Check version
+            NSString *ver = [[UIDevice currentDevice] systemVersion];
+            float ver_float = [ver floatValue];
+            if (ver_float > 5.0 && ver_float < 10.0) {
+                if (![[Database shared].managedObjectContext save:&error]) {
+                    // Replace this implementation with code to handle the error appropriately.
+                    // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                    NSLog(@"Unresolved error %@, %@", error, error.userInfo);
+                }
+            } else if (ver_float > 10.0) {
+                if (![[AppDelegate shared].persistentContainer.viewContext save:&error]) {
+                    // Replace this implementation with code to handle the error appropriately.
+                    // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                    NSLog(@"Unresolved error %@, %@", error, error.userInfo);
+                    abort();
+                }
+
             }
         }
         [self.tableView deleteRowsAtIndexPaths:self.arrayDeleteIndexPath withRowAnimation:UITableViewRowAnimationFade];

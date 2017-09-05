@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Database.h"
 
 @interface AppDelegate ()
 
@@ -78,7 +79,12 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
-    [self saveContext];
+    if ([[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){.majorVersion = 8, .minorVersion = 1, .patchVersion = 0}]) {
+        [Database.shared saveContext];
+    }
+    if ([NSProcessInfo.processInfo isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){10,0,0}]) {
+        [self saveContext];
+    }
 }
 
 

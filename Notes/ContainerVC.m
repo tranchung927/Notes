@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     // Do any additional setup after loading the view.
     self.leftOverlayView.constant = - self.view.bounds.size.width;
     self.isSideMenuOpen = false;

@@ -10,6 +10,7 @@
 		3B1B8AF61F55107C00CAC3EE /* ContainerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1B8AF51F55107C00CAC3EE /* ContainerVC.m */; };
 		3B33AC7D1F59449E00ACDADC /* SideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B33AC7C1F59449E00ACDADC /* SideMenu.m */; };
 		3B33AC861F595D6000ACDADC /* OverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B33AC851F595D6000ACDADC /* OverlayViewController.m */; };
+		3B6829F41F5EABFA00C892B3 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6829F31F5EABFA00C892B3 /* Database.m */; };
 		3BA70DCD1F53C71C00AC7217 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA70DCC1F53C71C00AC7217 /* main.m */; };
 		3BA70DD01F53C71C00AC7217 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA70DCF1F53C71C00AC7217 /* AppDelegate.m */; };
 		3BA70DD61F53C71C00AC7217 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BA70DD41F53C71C00AC7217 /* Main.storyboard */; };
@@ -28,6 +29,8 @@
 		3B33AC7C1F59449E00ACDADC /* SideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenu.m; sourceTree = "<group>"; };
 		3B33AC841F595D6000ACDADC /* OverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OverlayViewController.h; path = ../OverlayViewController.h; sourceTree = "<group>"; };
 		3B33AC851F595D6000ACDADC /* OverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OverlayViewController.m; path = ../OverlayViewController.m; sourceTree = "<group>"; };
+		3B6829F21F5EABFA00C892B3 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
+		3B6829F31F5EABFA00C892B3 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
 		3BA70DC81F53C71C00AC7217 /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BA70DCC1F53C71C00AC7217 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3BA70DCE1F53C71C00AC7217 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -87,6 +90,8 @@
 		3B6829CB1F5E7D3B00C892B3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3B6829F21F5EABFA00C892B3 /* Database.h */,
+				3B6829F31F5EABFA00C892B3 /* Database.m */,
 				3BA70DD71F53C71C00AC7217 /* Notes.xcdatamodeld */,
 			);
 			name = Model;
@@ -209,6 +214,7 @@
 				3BF16F7C1F56C8F7008092F9 /* NoteTableViewCell.m in Sources */,
 				3B33AC861F595D6000ACDADC /* OverlayViewController.m in Sources */,
 				3BA70DD01F53C71C00AC7217 /* AppDelegate.m in Sources */,
+				3B6829F41F5EABFA00C892B3 /* Database.m in Sources */,
 				3BA70DCD1F53C71C00AC7217 /* main.m in Sources */,
 				3BA70DD91F53C71C00AC7217 /* Notes.xcdatamodeld in Sources */,
 				3BA70E131F53CA9800AC7217 /* DetailViewController.m in Sources */,
