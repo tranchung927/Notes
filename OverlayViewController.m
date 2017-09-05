@@ -28,7 +28,10 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)clickCoverButtonOverlay:(id)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"SetTimeAlarmClose" object:nil];
+    // Get the current date
+    NSDate *pickerDate = [self.datePicker date];
+    NSLog(@"Time: %@",pickerDate);
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"SetTimeAlarmClose" object:pickerDate];
 }
 
 @end

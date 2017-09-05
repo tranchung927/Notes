@@ -9,11 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface SideMenu : UITableViewController
-
-@property (nonatomic)NSMutableArray *sections;
-@property (nonatomic)NSMutableArray *cells;
-
-@property (weak, nonatomic) IBOutlet UITableViewCell *setFont;
-
+@property (weak, nonatomic) IBOutlet UILabel *timeAlarm;
+@property (weak, nonatomic) IBOutlet UISwitch *repeatAlarm;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *isOnAlarm;
+@property (nonatomic) NSDate *time;
 
 @end

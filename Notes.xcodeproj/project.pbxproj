@@ -63,8 +63,6 @@
 				3B1B8AF51F55107C00CAC3EE /* ContainerVC.m */,
 				3BA70E0E1F53C8D900AC7217 /* MasterTableViewController.h */,
 				3BA70E0F1F53C8D900AC7217 /* MasterTableViewController.m */,
-				3BF16F7A1F56C8F7008092F9 /* NoteTableViewCell.h */,
-				3BF16F7B1F56C8F7008092F9 /* NoteTableViewCell.m */,
 				3BA70E111F53CA9800AC7217 /* DetailViewController.h */,
 				3BA70E121F53CA9800AC7217 /* DetailViewController.m */,
 				3B33AC7B1F59449E00ACDADC /* SideMenu.h */,
@@ -73,6 +71,25 @@
 				3B33AC851F595D6000ACDADC /* OverlayViewController.m */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		3B6829CA1F5E7CF000C892B3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3BF16F7A1F56C8F7008092F9 /* NoteTableViewCell.h */,
+				3BF16F7B1F56C8F7008092F9 /* NoteTableViewCell.m */,
+				3BA70DD41F53C71C00AC7217 /* Main.storyboard */,
+				3BA70DDC1F53C71C00AC7217 /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		3B6829CB1F5E7D3B00C892B3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3BA70DD71F53C71C00AC7217 /* Notes.xcdatamodeld */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		3BA70DBF1F53C71C00AC7217 = {
@@ -96,9 +113,9 @@
 			children = (
 				3BA70DCE1F53C71C00AC7217 /* AppDelegate.h */,
 				3BA70DCF1F53C71C00AC7217 /* AppDelegate.m */,
+				3B6829CB1F5E7D3B00C892B3 /* Model */,
 				3B1B8AF31F550A8600CAC3EE /* Controller */,
-				3BA70DD41F53C71C00AC7217 /* Main.storyboard */,
-				3BA70DDC1F53C71C00AC7217 /* LaunchScreen.storyboard */,
+				3B6829CA1F5E7CF000C892B3 /* View */,
 				3BA70DCB1F53C71C00AC7217 /* Supporting Files */,
 			);
 			path = Notes;
@@ -109,7 +126,6 @@
 			children = (
 				3BA70DDA1F53C71C00AC7217 /* Assets.xcassets */,
 				3BA70DDF1F53C71C00AC7217 /* Info.plist */,
-				3BA70DD71F53C71C00AC7217 /* Notes.xcdatamodeld */,
 				3BA70DCC1F53C71C00AC7217 /* main.m */,
 			);
 			name = "Supporting Files";
