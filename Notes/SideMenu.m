@@ -28,20 +28,22 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"index: %ld",(long)indexPath.row);
+    NSNumber *index = [[NSNumber alloc]initWithInteger:indexPath.row];
     switch (indexPath.row) {
         case 1:
-            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"SetTimeAlarmOpen" object:index];
             break;
         case 2:
-            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"SetTimeAlarmOpen" object:index];
             break;
         case 4:
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"SetTimeAlarmOpen" object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"SetTimeAlarmOpen" object:index];
             break;
         default:
             break;
     }
 }
+
 - (IBAction)repeatAlarm:(id)sender {
     NSLog(@"%f and %f",[self.time timeIntervalSinceNow],[[NSDate date] timeIntervalSinceNow]);
 }

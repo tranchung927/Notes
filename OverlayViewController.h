@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UIButton *coverButtonOverlay;
 @property (weak, nonatomic) IBOutlet UIView *viewContainerPicker;
-
+@property (weak, nonatomic) IBOutlet UIPickerView *settingPickerView;
+@property (nonatomic) int numberSetting;
 @end

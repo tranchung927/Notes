@@ -280,7 +280,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecB-nd-X32">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <connections>
-                                    <segue destination="4z3-fu-Qvu" kind="embed" id="I30-sy-8xf"/>
+                                    <segue destination="4z3-fu-Qvu" kind="embed" id="vYL-1K-thk"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -654,7 +654,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SMF-op-0hn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-204" y="1252"/>
+            <point key="canvasLocation" x="-343" y="1373"/>
         </scene>
         <!--Overlay View Controller-->
         <scene sceneID="q6L-3i-fo9">
@@ -677,21 +677,7 @@
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p7Q-lg-W79">
                                 <rect key="frame" x="81" y="213" width="158" height="142"/>
-                                <subviews>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="I8w-4U-z1s">
-                                        <rect key="frame" x="0.0" y="0.0" width="158" height="142"/>
-                                        <date key="date" timeIntervalSinceReferenceDate="526272532.38613802">
-                                            <!--2017-09-05 02:48:52 +0000-->
-                                        </date>
-                                    </datePicker>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="I8w-4U-z1s" secondAttribute="trailing" id="8cb-zK-5M5"/>
-                                    <constraint firstItem="I8w-4U-z1s" firstAttribute="leading" secondItem="p7Q-lg-W79" secondAttribute="leading" id="IpE-LT-rbn"/>
-                                    <constraint firstItem="I8w-4U-z1s" firstAttribute="top" secondItem="p7Q-lg-W79" secondAttribute="top" id="Svf-Om-bKt"/>
-                                    <constraint firstAttribute="bottom" secondItem="I8w-4U-z1s" secondAttribute="bottom" id="pFI-Cu-igt"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -713,12 +699,24 @@
                     <connections>
                         <outlet property="coverButtonOverlay" destination="FiZ-ir-mdB" id="d89-1C-jax"/>
                         <outlet property="datePicker" destination="I8w-4U-z1s" id="J7L-Ei-IDL"/>
+                        <outlet property="settingPickerView" destination="Yjp-XG-F3u" id="lG2-bA-brO"/>
                         <outlet property="viewContainerPicker" destination="p7Q-lg-W79" id="f7B-G2-Hft"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TIf-nU-NpU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pickerView contentMode="scaleToFill" id="Yjp-XG-F3u">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="216"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                </pickerView>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" id="I8w-4U-z1s">
+                    <rect key="frame" x="0.0" y="0.0" width="194" height="142"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <date key="date" timeIntervalSinceReferenceDate="526272532.38613802">
+                        <!--2017-09-05 02:48:52 +0000-->
+                    </date>
+                </datePicker>
             </objects>
-            <point key="canvasLocation" x="664" y="1242"/>
+            <point key="canvasLocation" x="660" y="1323"/>
         </scene>
     </scenes>
     <resources>
